@@ -16,18 +16,18 @@ export type Pln ={
 
 const App:React.FC = () =>{
   //const plants: [] = [{id:'' , title:'' , description:'', imgURL:'', quantity:'' }]
-  // return <div>
-  //   <Plant name={'Orquidea'} image={''} description={'Roja'} amount={0}  />
-    {plants.map(pln=>{
+  return <div>
+  <Plant name={'Orquidea'} image={''} description={'Roja'} amount={0}  />
+    {/*plants.map(pln=>{
       return(
         <li key={pln.id}>
           
 
         </li>
       )
-    })}
+    })*/}
     
- // </div>
+  </div>
   
 }
 
