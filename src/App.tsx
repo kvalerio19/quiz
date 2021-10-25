@@ -1,34 +1,56 @@
-import React from 'react';
-//import logo from './logo.svg';
-import './App.css';
-import { Plant } from './Plant';
-//import { Item } from './Item';
-import { PLANTS_DATA } from './data';
-import { title } from 'process';
+import React, {useState} from 'react';
+import {PLANTS_DATA, Plants} from './data';
+import {Card} from './Card';
+//import styled from 'styled-components';
 
-export type Pln ={
-  id: number;
-	title: string;
-	description: string;
-	imgURL: string;
-	quantity: number
-}
+function App() {
+  const [plants, setPlants] = useState(PLANTS_DATA);
 
-const App:React.FC = () =>{
-  //const plants: [] = [{id:'' , title:'' , description:'', imgURL:'', quantity:'' }]
-  return <div>
-  <Plant name={'Orquidea'} image={''} description={'Roja'} amount={0}  />
-    {/*plants.map(pln=>{
-      return(
-        <li key={pln.id}>
-          
-
-        </li>
-      )
-    })*/}
-    
-  </div>
+  /** MANEJO DE ESTADO Y ACTUALIZACION DE CANTIDAD DESDE COMPONENTE PADRE */
+   const [currentId, setCurrentId] = useState(0);
   
+   const addPlant = () => {
+       setPlants((previous:any) => {
+         return previous.map((plant:any) => {
+           if(plant.id === currentId){
+             return {...plant, quantity:plant.quantity+1}
+           }
+           return plant;
+         });
+       });
+     }
+
+
+   const removePlant = () => {
+     setPlants((previous:any) => {
+       return previous.map((plant:any) => {
+         if(plant.id === currentId){
+           return {...plant, quantity:plant.quantity-1}
+         }
+         return plant;
+       });
+     });
+   }
+
+   const setPlant = (id:number) => {
+     setCurrentId(id);
+   }
+
+  return (
+    <div>
+      {plants.length > 0 ? plants.map( (plant) => 
+      //   <div  key={plant.id} onClick={() => setPlant(plant.id!) }>
+      
+      <div  key={plant.id}>
+        <Card  title={plant.title} description={plant.description} imgURL={plant.imgURL} quantity={plant.quantity}/>
+        
+      </div>
+      
+      ): null }
+      
+    </div>
+    
+  );
 }
 
 export default App;

@@ -1,5 +1,5 @@
 export interface Plants {
-	id: number;
+	id?: number;
 	title: string;
 	description: string;
 	imgURL: string;
@@ -11,7 +11,7 @@ export const PLANTS_DATA: Plants[] = [
 		id: 1,
 		title: 'Monstera Deliciosa',
 		description: 'planta tropical',
-		imgURL: '',
+		imgURL: 'https://thumbs.dreamstime.com/b/three-monstera-plant-leaves-tropical-evergreen-vine-isolated-white-background-path-clipping-included-118881516.jpg',
 		quantity: 10,
 	},
 	{
